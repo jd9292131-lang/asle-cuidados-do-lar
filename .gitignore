@@ -1,0 +1,31 @@
+﻿node_modules/
+.next/
+out/
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local storage
+storage/*
+!storage/.gitkeep
+
+# Test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# IDE
+.vscode/
+.idea/
+.vercel
+.env*
+
+.neon
