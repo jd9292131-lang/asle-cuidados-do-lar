@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ASLE - Cuidados do Lar",
   description:
-    "Recrutamento e intermediação de profissionais domésticas para famílias e clientes.",
+    "Recrutamento, seleção e intermediação de profissionais para cuidados do lar.",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt">
+    <html lang="pt-AO">
       <body>{children}</body>
     </html>
   );

@@ -1,5 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap");
+
+:root {
+  --asle-purple: #6d28d9;
+  --asle-purple-dark: #4c1d95;
+  --asle-purple-light: #8b5cf6;
+
+  --asle-gold: #f4c430;
+  --asle-gold-dark: #d9a900;
+  --asle-gold-light: #f8d65a;
+
+  --asle-black: #0b0b0f;
+  --asle-black-soft: #15151c;
+
+  --asle-white: #ffffff;
+  --asle-off-white: #f8f7f4;
+  --asle-gray: #6b6b76;
+  --asle-gray-light: #e9e7e2;
+
+  --container: 1180px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+
+  --shadow-sm: 0 4px 15px rgba(11, 11, 15, 0.06);
+  --shadow-md: 0 12px 35px rgba(11, 11, 15, 0.1);
+  --shadow-lg: 0 25px 60px rgba(11, 11, 15, 0.14);
+}
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 html,
@@ -9,7 +43,776 @@ body {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f7f5ef;
-  color: #111111;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  background: var(--asle-off-white);
+  color: var(--asle-black);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.asle-container {
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.asle-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(248, 247, 244, 0.94);
+  border-bottom: 1px solid rgba(11, 11, 15, 0.07);
+  backdrop-filter: blur(18px);
+}
+
+.asle-header-inner {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.asle-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.asle-logo img {
+  width: 150px;
+  height: auto;
+  max-height: 58px;
+  object-fit: contain;
+}
+
+.asle-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.asle-nav a {
+  position: relative;
+  color: #35343b;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.asle-nav a:hover {
+  color: var(--asle-purple);
+}
+
+.asle-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.asle-btn {
+  min-height: 46px;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.asle-btn:hover {
+  transform: translateY(-2px);
+}
+
+.asle-btn-primary {
+  background: var(--asle-purple);
+  color: var(--asle-white);
+  box-shadow: 0 8px 22px rgba(109, 40, 217, 0.24);
+}
+
+.asle-btn-primary:hover {
+  background: var(--asle-purple-dark);
+}
+
+.asle-btn-gold {
+  background: var(--asle-gold);
+  color: var(--asle-black);
+  box-shadow: 0 8px 22px rgba(244, 196, 48, 0.22);
+}
+
+.asle-btn-gold:hover {
+  background: var(--asle-gold-dark);
+}
+
+.asle-btn-outline {
+  background: transparent;
+  color: var(--asle-black);
+  border: 1px solid rgba(11, 11, 15, 0.14);
+}
+
+.asle-btn-outline:hover {
+  border-color: var(--asle-purple);
+  color: var(--asle-purple);
+}
+
+.asle-btn-large {
+  min-height: 54px;
+  padding: 0 25px;
+  border-radius: 12px;
+}
+
+/* ================================
+   HERO
+================================ */
+
+.asle-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 95px 0 100px;
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(109, 40, 217, 0.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 15% 90%,
+      rgba(244, 196, 48, 0.12),
+      transparent 30%
+    ),
+    var(--asle-off-white);
+}
+
+.asle-hero-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 70px;
+}
+
+.asle-hero-content {
+  max-width: 650px;
+}
+
+.asle-eyebrow {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 100px;
+  background: rgba(109, 40, 217, 0.09);
+  color: var(--asle-purple);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.asle-hero h1 {
+  margin: 22px 0 20px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(48px, 6vw, 76px);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.asle-hero h1 span {
+  color: var(--asle-purple);
+}
+
+.asle-hero-description {
+  max-width: 590px;
+  margin: 0;
+  color: var(--asle-gray);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.asle-hero-actions {
+  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.asle-hero-trust {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #65636b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.asle-hero-trust svg {
+  color: var(--asle-gold-dark);
+}
+
+/* Hero visual */
+
+.asle-hero-visual {
+  position: relative;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.asle-hero-card {
+  position: relative;
+  width: min(100%, 450px);
+  min-height: 430px;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--asle-black);
+  box-shadow: var(--shadow-lg);
+}
+
+.asle-hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 70% 25%,
+      rgba(109, 40, 217, 0.8),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(244, 196, 48, 0.38),
+      transparent 32%
+    );
+}
+
+.asle-hero-card-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  min-height: 430px;
+  padding: 38px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--asle-white);
+}
+
+.asle-hero-card-icon {
+  width: 65px;
+  height: 65px;
+  margin-bottom: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  background: rgba(244, 196, 48, 0.14);
+  color: var(--asle-gold);
+}
+
+.asle-hero-card h2 {
+  margin: 0 0 10px;
+  font-size: 27px;
+  line-height: 1.2;
+}
+
+.asle-hero-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+/* ================================
+   GENERIC SECTION
+================================ */
+
+.asle-section {
+  padding: 100px 0;
+}
+
+.asle-section-light {
+  background: var(--asle-white);
+}
+
+.asle-section-dark {
+  background: var(--asle-black);
+  color: var(--asle-white);
+}
+
+.asle-section-heading {
+  max-width: 680px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.asle-section-heading .asle-eyebrow {
+  margin-bottom: 14px;
+}
+
+.asle-section-heading h2 {
+  margin: 0 0 15px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.12;
+}
+
+.asle-section-heading p {
+  margin: 0;
+  color: var(--asle-gray);
+  font-size: 16px;
+}
+
+.asle-section-dark .asle-section-heading p {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ================================
+   SERVICES
+================================ */
+
+.asle-services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.asle-service-card {
+  padding: 32px;
+  border: 1px solid var(--asle-gray-light);
+  border-radius: var(--radius-lg);
+  background: var(--asle-white);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.asle-service-card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(109, 40, 217, 0.22);
+  box-shadow: var(--shadow-md);
+}
+
+.asle-service-icon {
+  width: 55px;
+  height: 55px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: rgba(109, 40, 217, 0.09);
+  color: var(--asle-purple);
+}
+
+.asle-service-card:nth-child(2) .asle-service-icon {
+  background: rgba(244, 196, 48, 0.17);
+  color: #a77b00;
+}
+
+.asle-service-card:nth-child(3) .asle-service-icon {
+  background: rgba(11, 11, 15, 0.08);
+  color: var(--asle-black);
+}
+
+.asle-service-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.asle-service-card p {
+  margin: 0;
+  color: var(--asle-gray);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ================================
+   HOW IT WORKS
+================================ */
+
+.asle-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.asle-step {
+  position: relative;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  background: #f5f3ee;
+}
+
+.asle-step-number {
+  width: 42px;
+  height: 42px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--asle-purple);
+  color: var(--asle-white);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.asle-step:nth-child(2) .asle-step-number {
+  background: var(--asle-gold);
+  color: var(--asle-black);
+}
+
+.asle-step:nth-child(3) .asle-step-number {
+  background: var(--asle-black);
+  color: var(--asle-white);
+}
+
+.asle-step h3 {
+  margin: 0 0 10px;
+  font-size: 19px;
+}
+
+.asle-step p {
+  margin: 0;
+  color: var(--asle-gray);
+  font-size: 14px;
+}
+
+/* ================================
+   AUDIENCE SECTIONS
+================================ */
+
+.asle-audience-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.asle-audience-card {
+  position: relative;
+  min-height: 330px;
+  padding: 40px;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  background: var(--asle-black);
+  color: var(--asle-white);
+}
+
+.asle-audience-card::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  right: -90px;
+  bottom: -100px;
+  border-radius: 50%;
+  background: rgba(109, 40, 217, 0.4);
+}
+
+.asle-audience-card.gold {
+  background: var(--asle-purple);
+}
+
+.asle-audience-card.gold::after {
+  background: rgba(244, 196, 48, 0.35);
+}
+
+.asle-audience-icon {
+  position: relative;
+  z-index: 2;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.11);
+  color: var(--asle-gold);
+}
+
+.asle-audience-card h3,
+.asle-audience-card p,
+.asle-audience-card a {
+  position: relative;
+  z-index: 2;
+}
+
+.asle-audience-card h3 {
+  max-width: 450px;
+  margin: 0 0 12px;
+  font-size: 27px;
+}
+
+.asle-audience-card p {
+  max-width: 450px;
+  margin: 0 0 25px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 14px;
+}
+
+.asle-audience-card a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--asle-gold);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.asle-audience-card.gold a {
+  color: var(--asle-gold);
+}
+
+/* ================================
+   CTA
+================================ */
+
+.asle-cta {
+  padding: 90px 0;
+  background:
+    linear-gradient(
+      120deg,
+      var(--asle-purple-dark),
+      var(--asle-purple) 55%,
+      #7c3aed
+    );
+  color: var(--asle-white);
+}
+
+.asle-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.asle-cta h2 {
+  max-width: 700px;
+  margin: 0 0 10px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(32px, 4vw, 50px);
+  line-height: 1.1;
+}
+
+.asle-cta p {
+  max-width: 650px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.asle-cta .asle-btn-gold {
+  flex-shrink: 0;
+}
+
+/* ================================
+   FOOTER
+================================ */
+
+.asle-footer {
+  padding: 65px 0 25px;
+  background: var(--asle-black);
+  color: var(--asle-white);
+}
+
+.asle-footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 50px;
+  padding-bottom: 50px;
+}
+
+.asle-footer-brand img {
+  width: 145px;
+  margin-bottom: 20px;
+}
+
+.asle-footer-brand p {
+  max-width: 330px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 13px;
+}
+
+.asle-footer-column h4 {
+  margin: 0 0 18px;
+  font-size: 14px;
+}
+
+.asle-footer-column a {
+  display: block;
+  margin-bottom: 11px;
+  color: rgba(255, 255, 255, 0.58);
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.asle-footer-column a:hover {
+  color: var(--asle-gold);
+}
+
+.asle-footer-bottom {
+  padding-top: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 12px;
+  text-align: center;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 1050px) {
+  .asle-nav {
+    gap: 18px;
+  }
+
+  .asle-header-actions .asle-btn-outline {
+    display: none;
+  }
+
+  .asle-hero-inner {
+    gap: 40px;
+  }
+
+  .asle-hero h1 {
+    font-size: 58px;
+  }
+}
+
+@media (max-width: 850px) {
+  .asle-header-inner {
+    min-height: 72px;
+  }
+
+  .asle-nav {
+    display: none;
+  }
+
+  .asle-hero {
+    padding: 65px 0 70px;
+  }
+
+  .asle-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .asle-hero-content {
+    max-width: 720px;
+  }
+
+  .asle-hero-visual {
+    min-height: 400px;
+  }
+
+  .asle-services-grid,
+  .asle-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .asle-audience-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .asle-cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .asle-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .asle-container {
+    width: min(var(--container), calc(100% - 28px));
+  }
+
+  .asle-header-actions {
+    gap: 7px;
+  }
+
+  .asle-header-actions .asle-btn {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 12px;
+  }
+
+  .asle-logo img {
+    width: 120px;
+  }
+
+  .asle-hero h1 {
+    font-size: 45px;
+  }
+
+  .asle-hero-description {
+    font-size: 16px;
+  }
+
+  .asle-hero-actions {
+    flex-direction: column;
+  }
+
+  .asle-hero-actions .asle-btn {
+    width: 100%;
+  }
+
+  .asle-hero-card {
+    min-height: 360px;
+  }
+
+  .asle-hero-card-content {
+    min-height: 360px;
+    padding: 28px;
+  }
+
+  .asle-section {
+    padding: 70px 0;
+  }
+
+  .asle-service-card,
+  .asle-step,
+  .asle-audience-card {
+    padding: 27px;
+  }
+
+  .asle-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
 }
