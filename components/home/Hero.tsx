@@ -3,6 +3,7 @@ import {
   BriefcaseBusiness,
   CheckCircle2,
 } from "lucide-react";
+import { getAsleWhatsAppUrl } from "@/lib/contact";
 
 export default function Hero() {
   return (
@@ -28,7 +29,9 @@ export default function Hero() {
 
           <div className="asle-hero-actions">
             <a
-              href="#servicos"
+              href={getAsleWhatsAppUrl("Olá, gostaria de encontrar uma profissional para o meu lar.")}
+              target="_blank"
+              rel="noreferrer"
               className="asle-btn asle-btn-primary asle-btn-large"
             >
               Encontrar profissional

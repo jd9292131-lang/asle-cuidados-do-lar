@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import Hero from "../components/home/Hero";
 import Services from "../components/home/Services";
@@ -7,6 +7,7 @@ import ForFamilies from "../components/home/ForFamilies";
 import CTA from "../components/home/CTA";
 
 import { ArrowRight } from "lucide-react";
+import { getAsleWhatsAppUrl } from "@/lib/contact";
 export default function HomePage() {
   return (
     <>
@@ -88,7 +89,13 @@ export default function HomePage() {
 
               <a href="#servicos">Serviços</a>
               <a href="#como-funciona">Como funciona</a>
-              <a href="#contacto">Contacto</a>
+              <a
+                href={getAsleWhatsAppUrl("Olá, gostaria de falar com a ASLE.")}
+                target="_blank"
+                rel="noreferrer"
+              >
+                WhatsApp
+              </a>
             </div>
 
             <div className="asle-footer-column">

@@ -2,6 +2,8 @@ import {
   ArrowRight,
   MessageCircle,
 } from "lucide-react";
+import Link from "next/link";
+import { getAsleWhatsAppUrl } from "@/lib/contact";
 
 export default function CTA() {
   return (
@@ -16,11 +18,19 @@ export default function CTA() {
           </p>
         </div>
 
-        <a href="/registar" className="asle-btn asle-btn-gold asle-btn-large">
+        <a
+          href={getAsleWhatsAppUrl("Olá, gostaria de falar com a ASLE sobre os serviços para o lar.")}
+          className="asle-btn asle-btn-gold asle-btn-large"
+          target="_blank"
+          rel="noreferrer"
+        >
           <MessageCircle size={18} />
-          Começar agora
+          Contactar pelo WhatsApp
           <ArrowRight size={18} />
         </a>
+        <Link href="/registar" className="asle-cta-secondary">
+          Quero trabalhar com a ASLE
+        </Link>
       </div>
     </section>
   );

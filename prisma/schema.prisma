@@ -1,9 +1,321 @@
 generator client {
   provider = "prisma-client"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+model User {
+  id                                   String                   @id @default(uuid())
+  email                                String                   @unique
+  passwordHash                         String
+  role                                 UserRole
+  status                               UserStatus               @default(PENDING)
+  emailVerifiedAt                      DateTime?
+  firstName                            String
+  lastName                             String
+  phone                                String?
+  createdAt                            DateTime                 @default(now())
+  updatedAt                            DateTime                 @updatedAt
+  lastLoginAt                          DateTime?
+  statusReason                         String?
+  suspendedUntil                       DateTime?
+  Announcement                         Announcement[]
+  AnnouncementRecipient                AnnouncementRecipient[]
+  auditLogs                            AuditLog[]
+  candidate                            Candidate?
+  client                               Client?
+  Document_Document_reviewedByIdToUser Document[]               @relation("Document_reviewedByIdToUser")
+  documents                            Document[]
+  EmailVerificationToken               EmailVerificationToken[]
+  Interview                            Interview[]
+  Message_Message_recipientIdToUser    Message[]                @relation("Message_recipientIdToUser")
+  Message_Message_senderIdToUser       Message[]                @relation("Message_senderIdToUser")
+  notifications                        Notification[]
+  PasswordResetToken                   PasswordResetToken[]
+  ServiceRequest                       ServiceRequest[]
+  BlobCleanup                          BlobCleanup[]
+
+  @@index([role])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Candidate {
+  id                String        @id @default(uuid())
+  userId            String        @unique
+  birthDate         DateTime?
+  gender            String?
+  nationality       String?
+  address           String?
+  city              String?
+  professionalTitle String?
+  bio               String?
+  yearsExperience   Int?
+  availability      String?
+  availableFrom     DateTime?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  applications      Application[]
+  user              User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Interview         Interview[]
+}
+
+model Client {
+  id             String           @id @default(uuid())
+  userId         String           @unique
+  companyName    String?
+  address        String?
+  city           String?
+  notes          String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  jobs           Job[]
+  ServiceRequest ServiceRequest[]
+}
+
+model Document {
+  id                               String         @id @default(uuid())
+  userId                           String
+  type                             DocumentType
+  status                           DocumentStatus @default(PENDING)
+  originalName                     String
+  mimeType                         String
+  sizeBytes                        Int
+  storageKey                       String
+  rejectionReason                  String?
+  uploadedAt                       DateTime       @default(now())
+  reviewedAt                       DateTime?
+  reviewedById                     String?
+  User_Document_reviewedByIdToUser User?          @relation("Document_reviewedByIdToUser", fields: [reviewedById], references: [id])
+  user                             User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type])
+  @@index([status])
+  @@index([reviewedById])
+}
+
+model Job {
+  id           String        @id @default(uuid())
+  clientId     String
+  title        String
+  description  String
+  location     String?
+  serviceType  ServiceType   @default(OTHER)
+  status       JobStatus     @default(DRAFT)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  publishedAt  DateTime?
+  closedAt     DateTime?
+  applications Application[]
+  client       Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  @@index([clientId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([serviceType])
+}
+
+model Application {
+  id          String            @id @default(uuid())
+  jobId       String
+  candidateId String
+  status      ApplicationStatus @default(SUBMITTED)
+  coverLetter String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  candidate   Candidate         @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  job         Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  Interview   Interview[]
+
+  @@unique([jobId, candidateId])
+  @@index([candidateId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  type      NotificationType
+  title     String
+  message   String
+  actionUrl String?
+  readAt    DateTime?
+  createdAt DateTime         @default(now())
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([userId, readAt])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String
+  entity    String
+  entityId  String?
+  metadata  Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@index([entity, entityId])
+}
+
+model Announcement {
+  id                    String                  @id
+  title                 String
+  content               String
+  type                  AnnouncementType        @default(GENERAL)
+  status                AnnouncementStatus      @default(DRAFT)
+  display               AnnouncementDisplay     @default(NOTIFICATION)
+  audience              AudienceType            @default(ALL)
+  imageUrl              String?
+  buttonText            String?
+  buttonUrl             String?
+  priority              Int                     @default(0)
+  startsAt              DateTime?
+  endsAt                DateTime?
+  createdById           String
+  publishedAt           DateTime?
+  createdAt             DateTime                @default(now())
+  updatedAt             DateTime
+  User                  User                    @relation(fields: [createdById], references: [id])
+  AnnouncementRecipient AnnouncementRecipient[]
+
+  @@index([audience])
+  @@index([createdAt])
+  @@index([status, startsAt, endsAt])
+}
+
+model AnnouncementRecipient {
+  id             String       @id
+  announcementId String
+  userId         String
+  seenAt         DateTime?
+  dismissedAt    DateTime?
+  clickedAt      DateTime?
+  deliveredAt    DateTime     @default(now())
+  Announcement   Announcement @relation(fields: [announcementId], references: [id], onDelete: Cascade)
+  User           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([announcementId, userId])
+  @@index([announcementId])
+  @@index([userId, seenAt])
+}
+
+model EmailVerificationToken {
+  id        String    @id
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  User      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([expiresAt])
+  @@index([userId])
+}
+
+model Interview {
+  id            String          @id
+  applicationId String?
+  candidateId   String
+  recruiterId   String
+  scheduledAt   DateTime
+  location      String?
+  notes         String?
+  status        InterviewStatus @default(SCHEDULED)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime
+  Application   Application?    @relation(fields: [applicationId], references: [id])
+  Candidate     Candidate       @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  User          User            @relation(fields: [recruiterId], references: [id], onDelete: Cascade)
+
+  @@index([candidateId, scheduledAt])
+  @@index([recruiterId, scheduledAt])
+}
+
+model Message {
+  id                             String        @id
+  senderId                       String
+  recipientId                    String
+  subject                        String?
+  body                           String
+  status                         MessageStatus @default(SENT)
+  readAt                         DateTime?
+  createdAt                      DateTime      @default(now())
+  User_Message_recipientIdToUser User          @relation("Message_recipientIdToUser", fields: [recipientId], references: [id], onDelete: Cascade)
+  User_Message_senderIdToUser    User          @relation("Message_senderIdToUser", fields: [senderId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([recipientId, status])
+  @@index([senderId])
+}
+
+model PasswordResetToken {
+  id        String    @id
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+  User      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([expiresAt])
+  @@index([userId])
+}
+
+model ServiceRequest {
+  id                 String               @id
+  clientId           String
+  createdById        String
+  serviceType        ServiceType
+  title              String
+  description        String
+  location           String?
+  preferredStartDate DateTime?
+  durationDays       Int?
+  status             ServiceRequestStatus @default(SUBMITTED)
+  notes              String?
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime
+  Client             Client               @relation(fields: [clientId], references: [id], onDelete: Cascade)
+  User               User                 @relation(fields: [createdById], references: [id], onDelete: Cascade)
+
+  @@index([clientId])
+  @@index([createdAt])
+  @@index([serviceType])
+  @@index([status])
+}
+
+model BlobCleanup {
+  id          String   @id @default(uuid())
+  storageKey  String   @unique
+  requestedBy String?
+  createdAt   DateTime @default(now())
+  attempts    Int      @default(0)
+  lastError   String?
+  requestedByUser User? @relation(fields: [requestedBy], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+}
+
+model LoginThrottle {
+  bucket          String   @id
+  attempts        Int      @default(0)
+  windowStartedAt DateTime @default(now())
+
+  @@index([windowStartedAt])
 }
 
 enum UserRole {
@@ -59,178 +371,71 @@ enum NotificationType {
   DOCUMENT
   MESSAGE
   JOB
+  ANNOUNCEMENT
 }
 
-model User {
-  id           String     @id @default(uuid())
-  email        String     @unique
-  passwordHash String
-  role         UserRole
-  status       UserStatus @default(PENDING)
-
-  firstName    String
-  lastName     String
-  phone        String?
-
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
-  lastLoginAt  DateTime?
-
-  candidate    Candidate?
-  client       Client?
-
-  documents    Document[]
-  applications Application[]
-  notifications Notification[]
-  auditLogs    AuditLog[]
-
-  @@index([role])
-  @@index([status])
-  @@index([createdAt])
+enum AnnouncementDisplay {
+  NOTIFICATION
+  POPUP
+  BANNER
 }
 
-model Candidate {
-  id                String   @id @default(uuid())
-  userId            String   @unique
-
-  birthDate         DateTime?
-  gender            String?
-  nationality       String?
-  address           String?
-  city              String?
-
-  professionalTitle String?
-  bio               String?
-  yearsExperience   Int?
-
-  availability      String?
-  availableFrom     DateTime?
-
-  createdAt         DateTime @default(now())
-  updatedAt         DateTime @updatedAt
-
-  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+enum AnnouncementStatus {
+  DRAFT
+  SCHEDULED
+  PUBLISHED
+  PAUSED
+  EXPIRED
+  ARCHIVED
 }
 
-model Client {
-  id          String   @id @default(uuid())
-  userId      String   @unique
-
-  companyName String?
-  address     String?
-  city        String?
-
-  notes       String?
-
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  jobs        Job[]
+enum AnnouncementType {
+  GENERAL
+  PROMOTION
+  RECRUITMENT
+  IMPORTANT
+  SYSTEM
 }
 
-model Document {
-  id           String         @id @default(uuid())
-  userId       String
-
-  type         DocumentType
-  status       DocumentStatus @default(PENDING)
-
-  originalName String
-  mimeType     String
-  sizeBytes    Int
-  storageKey   String
-
-  rejectionReason String?
-
-  uploadedAt   DateTime @default(now())
-  reviewedAt   DateTime?
-
-  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([type])
-  @@index([status])
+enum AudienceType {
+  ALL
+  CANDIDATES
+  CLIENTS
+  RECRUITERS
+  ADMINS
+  SPECIFIC_USERS
 }
 
-model Job {
-  id          String    @id @default(uuid())
-  clientId    String
-
-  title       String
-  description String
-  location    String?
-
-  status      JobStatus @default(DRAFT)
-
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  publishedAt DateTime?
-
-  client      Client    @relation(fields: [clientId], references: [id], onDelete: Cascade)
-  applications Application[]
-
-  @@index([clientId])
-  @@index([status])
-  @@index([createdAt])
+enum InterviewStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
 }
 
-model Application {
-  id          String            @id @default(uuid())
-  jobId       String
-  candidateId String
-
-  status      ApplicationStatus @default(SUBMITTED)
-  coverLetter String?
-
-  createdAt   DateTime          @default(now())
-  updatedAt   DateTime          @updatedAt
-
-  job         Job               @relation(fields: [jobId], references: [id], onDelete: Cascade)
-  candidate   User              @relation(fields: [candidateId], references: [id], onDelete: Cascade)
-
-  @@unique([jobId, candidateId])
-  @@index([candidateId])
-  @@index([status])
-  @@index([createdAt])
+enum MessageStatus {
+  SENT
+  READ
+  ARCHIVED
 }
 
-model Notification {
-  id        String           @id @default(uuid())
-  userId    String
-
-  type      NotificationType
-  title     String
-  message   String
-
-  readAt    DateTime?
-  createdAt DateTime         @default(now())
-
-  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@index([userId])
-  @@index([readAt])
-  @@index([createdAt])
+enum ServiceRequestStatus {
+  DRAFT
+  SUBMITTED
+  IN_REVIEW
+  MATCHING
+  PROPOSED
+  ACCEPTED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
 }
 
-model AuditLog {
-  id         String   @id @default(uuid())
-  userId     String?
-
-  action     String
-  entity     String
-  entityId   String?
-  metadata   Json?
-
-  ipAddress  String?
-  userAgent  String?
-
-  createdAt  DateTime @default(now())
-
-  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
-
-  @@index([userId])
-  @@index([entity])
-  @@index([action])
-  @@index([createdAt])
+enum ServiceType {
+  BABYSITTER
+  DOMESTIC_WORKER
+  COOK
+  CLEANER
+  CAREGIVER
+  OTHER
 }

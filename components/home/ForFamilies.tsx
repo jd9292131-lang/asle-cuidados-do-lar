@@ -3,6 +3,7 @@ import {
   House,
   ShieldCheck,
 } from "lucide-react";
+import { getAsleWhatsAppUrl } from "@/lib/contact";
 
 export default function ForFamilies() {
   return (
@@ -21,7 +22,11 @@ export default function ForFamilies() {
               através da ASLE.
             </p>
 
-            <a href="#contacto">
+            <a
+              href={getAsleWhatsAppUrl("Olá, preciso de ajuda para encontrar uma profissional para o meu lar.")}
+              target="_blank"
+              rel="noreferrer"
+            >
               Encontrar profissional
               <ArrowRight size={17} />
             </a>
