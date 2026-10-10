@@ -35,29 +35,32 @@ export default function HowItWorks() {
         <div className="asle-section-heading">
           <div className="asle-eyebrow">Processo simples</div>
 
-          <h2>Como funciona?</h2>
+          <h2>Um processo claro, do primeiro contacto em diante.</h2>
 
           <p>
-            Tornamos o processo de encontrar profissionais mais organizado e
-            transparente.
+            A equipa ASLE ajuda a organizar cada passo para que saiba sempre
+            como avançar.
           </p>
         </div>
 
         <div className="asle-steps">
-          {steps.map((step) => {
+          {steps.map((step, index) => {
             const Icon = step.icon;
 
             return (
               <article className="asle-step" key={step.number}>
-                <div className="asle-step-number">{step.number}</div>
-
-                <div style={{ marginBottom: "15px" }}>
-                  <Icon size={23} />
+                <div className="asle-step-heading">
+                  <span className="asle-step-number">{step.number}</span>
+                  <span className="asle-step-icon">
+                    <Icon size={21} strokeWidth={1.8} aria-hidden="true" />
+                  </span>
                 </div>
 
                 <h3>{step.title}</h3>
-
                 <p>{step.description}</p>
+                {index < steps.length - 1 && (
+                  <span className="asle-step-connector" aria-hidden="true" />
+                )}
               </article>
             );
           })}

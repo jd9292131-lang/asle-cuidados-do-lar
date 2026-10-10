@@ -32,31 +32,33 @@ export default function Services() {
         <div className="asle-section-heading">
           <div className="asle-eyebrow">O que fazemos</div>
 
-          <h2>
-            Soluções para o
-            <br />
-            cuidado do lar
-          </h2>
+          <h2>Soluções para cuidar melhor do seu lar.</h2>
 
           <p>
-            Ajudamos clientes a encontrar profissionais adequados às suas
-            necessidades.
+            Um ponto de partida simples para encontrar o apoio que a sua
+            família precisa.
           </p>
         </div>
 
         <div className="asle-services-grid">
-          {services.map((service) => {
+          {services.map((service, index) => {
             const Icon = service.icon;
 
             return (
               <article className="asle-service-card" key={service.title}>
-                <div className="asle-service-icon">
-                  <Icon size={26} strokeWidth={1.9} />
+                <div className="asle-service-card-top">
+                  <div className="asle-service-icon">
+                    <Icon size={23} strokeWidth={1.8} aria-hidden="true" />
+                  </div>
+                  <span className="asle-service-index">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                 </div>
 
-                <h3>{service.title}</h3>
-
-                <p>{service.description}</p>
+                <div className="asle-service-card-copy">
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                </div>
               </article>
             );
           })}

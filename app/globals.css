@@ -1,31 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap");
 
 :root {
-  --asle-purple: #6d28d9;
-  --asle-purple-dark: #4c1d95;
-  --asle-purple-light: #8b5cf6;
+  --asle-purple: #65447a;
+  --asle-purple-dark: #453052;
+  --asle-purple-light: #8b6b9d;
 
-  --asle-gold: #f4c430;
-  --asle-gold-dark: #d9a900;
-  --asle-gold-light: #f8d65a;
+  --asle-gold: #d8b66a;
+  --asle-gold-dark: #a77b2c;
+  --asle-gold-light: #ead39a;
 
-  --asle-black: #0b0b0f;
-  --asle-black-soft: #15151c;
+  --asle-black: #29252d;
+  --asle-black-soft: #39333d;
 
   --asle-white: #ffffff;
-  --asle-off-white: #f8f7f4;
-  --asle-gray: #6b6b76;
-  --asle-gray-light: #e9e7e2;
+  --asle-off-white: #f8f6f2;
+  --asle-gray: #716b73;
+  --asle-gray-light: #e9e4e9;
 
   --container: 1180px;
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
-  --radius-xl: 30px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 26px;
 
-  --shadow-sm: 0 4px 15px rgba(11, 11, 15, 0.06);
-  --shadow-md: 0 12px 35px rgba(11, 11, 15, 0.1);
-  --shadow-lg: 0 25px 60px rgba(11, 11, 15, 0.14);
+  --shadow-sm: 0 4px 15px rgba(41, 37, 45, 0.05);
+  --shadow-md: 0 12px 35px rgba(41, 37, 45, 0.08);
+  --shadow-lg: 0 25px 60px rgba(41, 37, 45, 0.12);
+
+  --asle-surface: #ffffff;
+  --asle-surface-muted: #f3f0eb;
+  --asle-border: #e8e2e9;
+  --asle-text-muted: #77717a;
+  --asle-accent-soft: #f2edf4;
 }
 
 * {
@@ -3418,5 +3424,2501 @@ img {
 
   .client-request-heading {
     flex-direction: column;
+  }
+}
+
+/* =========================================================
+   ASLE — IDENTIDADE VISUAL PARTILHADA
+   ========================================================= */
+
+::selection {
+  background: rgba(101, 68, 122, 0.18);
+  color: var(--asle-purple-dark);
+}
+
+:focus-visible {
+  outline: 3px solid rgba(101, 68, 122, 0.45);
+  outline-offset: 3px;
+}
+
+.asle-header {
+  background: rgba(248, 246, 242, 0.94);
+  border-bottom-color: rgba(69, 48, 82, 0.1);
+}
+
+.asle-logo img {
+  mix-blend-mode: screen;
+}
+
+.asle-nav a:hover,
+.asle-header-login:hover,
+.asle-footer-column a:hover {
+  color: var(--asle-purple);
+}
+
+.asle-btn-primary,
+.asle-auth-submit {
+  background: var(--asle-purple);
+  box-shadow: 0 8px 22px rgba(69, 48, 82, 0.16);
+}
+
+.asle-btn-primary:hover,
+.asle-auth-submit:hover:not(:disabled) {
+  background: var(--asle-purple-dark);
+  box-shadow: 0 11px 26px rgba(69, 48, 82, 0.2);
+}
+
+.asle-btn-gold {
+  background: var(--asle-gold);
+  color: #302639;
+  box-shadow: 0 8px 22px rgba(167, 123, 44, 0.16);
+}
+
+.asle-btn-gold:hover {
+  background: var(--asle-gold-light);
+}
+
+.asle-btn-outline:hover {
+  border-color: var(--asle-purple);
+  color: var(--asle-purple);
+}
+
+.asle-hero {
+  background:
+    radial-gradient(circle at 85% 20%, rgba(101, 68, 122, 0.1), transparent 30%),
+    radial-gradient(circle at 15% 90%, rgba(216, 182, 106, 0.12), transparent 30%),
+    var(--asle-off-white);
+}
+
+.asle-hero-card {
+  background: var(--asle-purple-dark);
+}
+
+.asle-hero-card::before {
+  background:
+    radial-gradient(circle at 70% 25%, rgba(139, 107, 157, 0.72), transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(216, 182, 106, 0.32), transparent 32%);
+}
+
+.asle-section-dark,
+.asle-footer {
+  background: #302a35;
+}
+
+.asle-cta {
+  background: linear-gradient(120deg, var(--asle-purple-dark), var(--asle-purple) 62%, #755587);
+}
+
+.professional-shell,
+.admin-shell {
+  background: #f7f5f1;
+  color: var(--asle-black);
+}
+
+.professional-sidebar,
+.admin-sidebar {
+  background: #fffefa;
+  border-color: var(--asle-border);
+  box-shadow: 8px 0 28px rgba(41, 37, 45, 0.025);
+}
+
+.professional-brand-mark,
+.admin-brand-mark {
+  background: var(--asle-purple-dark);
+  color: #fff;
+}
+
+.professional-brand span,
+.professional-user-info span,
+.professional-navigation-title,
+.professional-account-label,
+.admin-brand small,
+.admin-user-chip small,
+.admin-navigation-label,
+.admin-sidebar-footer > span {
+  color: #89818d;
+}
+
+.professional-user,
+.admin-user-chip,
+.admin-sidebar-footer {
+  border-color: var(--asle-border);
+}
+
+.professional-avatar,
+.admin-user-avatar {
+  background: var(--asle-accent-soft);
+  color: var(--asle-purple-dark);
+}
+
+.professional-nav-link,
+.admin-nav-link {
+  color: #706a74;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.professional-nav-link:hover,
+.professional-nav-link.active,
+.admin-nav-link:hover,
+.admin-nav-link.active {
+  background: var(--asle-accent-soft);
+  color: var(--asle-purple-dark);
+}
+
+.professional-nav-link:hover,
+.admin-nav-link:hover {
+  transform: translateX(2px);
+}
+
+.professional-account,
+.admin-sidebar-footer button {
+  background: var(--asle-surface-muted);
+}
+
+.professional-content,
+.admin-content {
+  color: var(--asle-black);
+}
+
+.professional-header h1,
+.professional-page-header h1,
+.admin-page-header h1,
+.client-page-header h1 {
+  color: var(--asle-purple-dark);
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.professional-eyebrow,
+.card-label,
+.admin-section-title > a,
+.admin-back-link {
+  color: var(--asle-purple);
+}
+
+.professional-status,
+.admin-total {
+  border-color: var(--asle-border);
+  background: var(--asle-surface);
+  color: #5f5864;
+}
+
+.professional-card,
+.professional-form-card,
+.client-panel,
+.admin-user-card,
+.admin-document-card,
+.admin-stat-card,
+.admin-filters,
+.admin-job-form,
+.admin-job-list > article,
+.admin-audit-row,
+.notification-card {
+  border-color: var(--asle-border);
+  background: var(--asle-surface);
+  box-shadow: 0 8px 25px rgba(41, 37, 45, 0.035);
+}
+
+.professional-card,
+.professional-form-card,
+.client-panel,
+.admin-user-card,
+.admin-document-card,
+.admin-stat-card,
+.admin-job-form,
+.admin-job-list > article,
+.notification-card {
+  border-radius: var(--radius-lg);
+}
+
+.professional-card h2,
+.professional-list > .professional-form-card h2,
+.professional-form-card h2,
+.client-panel h2,
+.admin-section-title h2,
+.admin-job-form h2,
+.admin-job-card h2 {
+  color: var(--asle-purple-dark);
+}
+
+.card-icon {
+  background: var(--asle-accent-soft);
+}
+
+.progress-header strong,
+.admin-stat-card strong,
+.admin-stat-grid strong {
+  color: var(--asle-purple);
+}
+
+.progress-track {
+  background: #eee9ef;
+}
+
+.progress-value {
+  background: linear-gradient(90deg, var(--asle-purple), #9275a2);
+}
+
+.primary-button {
+  border-color: var(--asle-purple);
+  background: var(--asle-purple);
+  color: #fff;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.primary-button:hover {
+  border-color: var(--asle-purple-dark);
+  background: var(--asle-purple-dark);
+  box-shadow: 0 7px 18px rgba(69, 48, 82, 0.16);
+  transform: translateY(-1px);
+}
+
+.secondary-button {
+  border-color: var(--asle-border);
+  background: #fff;
+  color: var(--asle-purple-dark);
+}
+
+.secondary-button:hover {
+  border-color: var(--asle-purple-light);
+  color: var(--asle-purple);
+}
+
+.professional-welcome {
+  background: linear-gradient(125deg, var(--asle-purple-dark), var(--asle-purple));
+  box-shadow: 0 12px 28px rgba(69, 48, 82, 0.12);
+}
+
+.professional-field input:focus,
+.professional-field select:focus,
+.professional-field textarea:focus,
+.client-request-form input:focus,
+.client-request-form select:focus,
+.client-request-form textarea:focus,
+.document-upload-form input:focus,
+.document-upload-form select:focus,
+.admin-filters input:focus,
+.admin-filters select:focus,
+.admin-job-form input:focus,
+.admin-job-form select:focus,
+.admin-job-form textarea:focus,
+.admin-dialog input:focus,
+.admin-dialog textarea:focus {
+  border-color: var(--asle-purple-light);
+  box-shadow: 0 0 0 3px rgba(101, 68, 122, 0.12);
+  outline: none;
+}
+
+.admin-nav-link {
+  border-radius: 10px;
+}
+
+.admin-user-name:hover,
+.admin-document-info a,
+.admin-pagination a,
+.admin-filter-tabs a,
+.admin-section-title > a,
+.admin-back-link {
+  color: var(--asle-purple);
+}
+
+.admin-filter-tabs {
+  border-bottom-color: var(--asle-border);
+}
+
+.admin-filter-tabs a.active {
+  border-bottom-color: var(--asle-purple);
+  color: var(--asle-purple-dark);
+}
+
+.admin-action-button {
+  border-color: var(--asle-border);
+  color: #5f5864;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background 0.18s ease;
+}
+
+.admin-action-button:hover:not(:disabled) {
+  border-color: var(--asle-purple-light);
+  background: var(--asle-accent-soft);
+  color: var(--asle-purple-dark);
+}
+
+.admin-stat-card:hover {
+  border-color: #cbbbd3;
+}
+
+.admin-status-badge {
+  background: #f1edf4;
+  color: var(--asle-purple-dark);
+}
+
+.client-dashboard-links a {
+  border-color: var(--asle-border);
+  background: #fff;
+  color: var(--asle-purple-dark);
+}
+
+.client-dashboard-links a:hover {
+  border-color: var(--asle-purple-light);
+  background: var(--asle-accent-soft);
+}
+
+.client-request-heading > span {
+  background: #f1edf4;
+  color: var(--asle-purple-dark);
+}
+
+.asle-auth-brand {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(139, 107, 157, 0.34), transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(216, 182, 106, 0.16), transparent 28%),
+    linear-gradient(145deg, #29252d 0%, #39313d 48%, var(--asle-purple-dark) 100%);
+}
+
+.asle-auth-field input:focus {
+  border-color: var(--asle-purple);
+  box-shadow: 0 0 0 3px rgba(101, 68, 122, 0.12);
+}
+
+.asle-auth-field-top a,
+.asle-auth-label,
+.asle-auth-register a,
+.asle-recovery-panel > a:last-child {
+  color: var(--asle-purple);
+}
+
+.asle-register-type.is-active {
+  border-color: var(--asle-purple);
+  background: #f7f3f8;
+  box-shadow: 0 0 0 1px rgba(101, 68, 122, 0.08), 0 7px 22px rgba(69, 48, 82, 0.07);
+}
+
+.asle-register-type-icon {
+  background: var(--asle-accent-soft);
+  color: var(--asle-purple);
+}
+
+.asle-register-type.is-active .asle-register-type-check {
+  border-color: var(--asle-purple);
+  background: var(--asle-purple);
+}
+
+/* =========================================================
+   ASLE — REDESENHO DA EXPERIÊNCIA
+   ========================================================= */
+
+.asle-header {
+  border-bottom: 1px solid rgba(69, 48, 82, 0.08);
+  background: rgba(255, 254, 252, 0.96);
+  box-shadow: 0 4px 20px rgba(42, 35, 47, 0.025);
+}
+
+.asle-header-inner {
+  min-height: 84px;
+  gap: 34px;
+}
+
+.asle-logo {
+  gap: 9px;
+}
+
+.asle-brand-monogram {
+  position: relative;
+  display: grid;
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+  place-items: center;
+  border: 1px solid rgba(216, 182, 106, 0.48);
+  border-radius: 11px;
+  background: linear-gradient(145deg, #65447a, #453052);
+  color: #fff;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.asle-brand-monogram::after {
+  position: absolute;
+  right: 8px;
+  bottom: 7px;
+  left: 8px;
+  height: 1px;
+  background: var(--asle-gold);
+  content: "";
+}
+
+.asle-brand-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.asle-brand-copy strong {
+  color: #3c3241;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.asle-brand-copy small {
+  color: #817786;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.035em;
+}
+
+.asle-nav {
+  gap: clamp(18px, 2.5vw, 34px);
+}
+
+.asle-nav a {
+  color: #5f5863;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.asle-nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--asle-gold);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.asle-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.asle-header-actions {
+  gap: 18px;
+}
+
+.asle-header-login {
+  color: #554d59;
+  font-size: 13px;
+  font-weight: 700;
+  transition: color 0.18s ease;
+}
+
+.asle-header-actions .asle-btn {
+  min-height: 44px;
+  padding: 0 17px;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.asle-hero {
+  position: relative;
+  padding: 56px 0 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 82% 35%, rgba(226, 215, 231, 0.44), transparent 36%),
+    linear-gradient(180deg, #fbfaf8 0%, #f7f4f0 100%);
+}
+
+.asle-hero::before {
+  position: absolute;
+  top: -260px;
+  right: -145px;
+  width: 510px;
+  height: 510px;
+  border: 1px solid rgba(101, 68, 122, 0.08);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 54px rgba(101, 68, 122, 0.025),
+    0 0 0 110px rgba(101, 68, 122, 0.02);
+  content: "";
+  pointer-events: none;
+}
+
+.asle-hero-inner {
+  position: relative;
+  z-index: 1;
+  grid-template-columns: minmax(0, 1.02fr) minmax(390px, 0.98fr);
+  gap: clamp(48px, 7vw, 96px);
+  min-height: 560px;
+  padding-bottom: 56px;
+}
+
+.asle-hero-content {
+  max-width: 620px;
+}
+
+.asle-eyebrow {
+  gap: 9px;
+  padding: 8px 12px;
+  border: 1px solid rgba(101, 68, 122, 0.1);
+  background: #f0eaf2;
+  color: var(--asle-purple-dark);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.asle-hero h1 {
+  max-width: 690px;
+  margin: 25px 0 18px;
+  color: #2e2732;
+  font-size: clamp(44px, 4.3vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.asle-hero h1 span {
+  color: var(--asle-purple);
+}
+
+.asle-hero-description {
+  max-width: 535px;
+  color: #706a73;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.asle-hero-actions {
+  gap: 11px;
+  margin-top: 28px;
+}
+
+.asle-btn {
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+.asle-btn-large {
+  min-height: 50px;
+  padding: 0 19px;
+}
+
+.asle-btn-primary {
+  box-shadow: 0 7px 18px rgba(69, 48, 82, 0.17);
+}
+
+.asle-btn-outline {
+  border-color: #ddd5df;
+  background: rgba(255, 255, 255, 0.5);
+  color: #554d59;
+}
+
+.asle-hero-trust {
+  gap: 9px;
+  margin-top: 22px;
+  color: #6f6873;
+  font-size: 11px;
+}
+
+.asle-hero-trust svg {
+  flex: 0 0 auto;
+  color: #8e7444;
+}
+
+.asle-hero-visual {
+  min-height: 500px;
+  isolation: isolate;
+}
+
+.asle-hero-visual::before {
+  position: absolute;
+  inset: 27px 11px 9px 25px;
+  z-index: -2;
+  border-radius: 48% 48% 30px 30px;
+  background:
+    radial-gradient(circle at 70% 22%, rgba(255, 255, 255, 0.11), transparent 24%),
+    linear-gradient(148deg, #60466d 0%, #453052 75%);
+  content: "";
+  transform: rotate(2deg);
+}
+
+.asle-hero-visual::after {
+  position: absolute;
+  inset: 55px 42px 34px 55px;
+  z-index: -1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 46% 46% 25px 25px;
+  content: "";
+  transform: rotate(-2deg);
+}
+
+.asle-hero-orbit {
+  position: absolute;
+  z-index: -1;
+  border: 1px solid rgba(216, 182, 106, 0.38);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.asle-hero-orbit-one {
+  top: 3px;
+  right: 19px;
+  width: 118px;
+  height: 118px;
+}
+
+.asle-hero-orbit-two {
+  top: 27px;
+  right: 43px;
+  width: 70px;
+  height: 70px;
+}
+
+.asle-process-card {
+  position: relative;
+  width: min(100%, 425px);
+  min-height: 400px;
+  padding: 28px 30px 22px;
+  border: 1px solid rgba(69, 48, 82, 0.09);
+  border-radius: 17px;
+  background: #fffefa;
+  box-shadow: 0 25px 65px rgba(31, 21, 38, 0.2);
+  transform: translate(8px, 51px);
+}
+
+.asle-process-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.asle-process-symbol {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  border-radius: 10px;
+  background: #f0eaf2;
+  color: var(--asle-purple);
+}
+
+.asle-process-label,
+.professional-card-kicker {
+  color: #8a7d8e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.asle-process-status {
+  margin-left: auto;
+  padding: 6px 8px;
+  border: 1px solid #e9e3d5;
+  border-radius: 999px;
+  background: #fbf8ef;
+  color: #806b3f;
+  font-size: 8px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.asle-process-card h2 {
+  max-width: 320px;
+  margin: 26px 0 9px;
+  color: #332b37;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+}
+
+.asle-process-description {
+  margin: 0;
+  color: #756e78;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.asle-process-list {
+  display: grid;
+  gap: 0;
+  margin: 22px 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.asle-process-list li {
+  position: relative;
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  gap: 12px;
+  color: #4f4853;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.asle-process-list li:not(:last-child)::after {
+  position: absolute;
+  top: calc(50% + 10px);
+  left: 13px;
+  width: 1px;
+  height: 21px;
+  background: #e7dfea;
+  content: "";
+}
+
+.asle-process-step-number {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  place-items: center;
+  border: 1px solid #e4d9e9;
+  border-radius: 50%;
+  background: #f5f0f6;
+  color: var(--asle-purple);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.asle-process-list li:last-child .asle-process-step-number {
+  border-color: #e7deca;
+  background: #fbf7ed;
+  color: #927847;
+}
+
+.asle-process-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid #eee9ed;
+  color: #584b5e;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.asle-process-footer-mark {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border-radius: 7px;
+  background: var(--asle-purple-dark);
+  color: white;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 14px;
+}
+
+.asle-process-card-footer small {
+  display: block;
+  margin-top: 2px;
+  color: #928994;
+  font-size: 7px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.asle-process-footer-rule {
+  height: 1px;
+  flex: 1;
+  margin: 0 4px;
+  background: #e9e3e9;
+}
+
+.asle-process-footer-caption {
+  color: #918793;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.asle-hero-note {
+  position: absolute;
+  right: -15px;
+  bottom: 15px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border: 1px solid rgba(69, 48, 82, 0.08);
+  border-radius: 11px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(31, 21, 38, 0.13);
+}
+
+.asle-hero-note-icon {
+  display: grid;
+  width: 35px;
+  height: 35px;
+  place-items: center;
+  border-radius: 10px;
+  background: #f8f3e6;
+  color: #917845;
+}
+
+.asle-hero-note strong,
+.asle-hero-note small {
+  display: block;
+}
+
+.asle-hero-note strong {
+  color: #493f4e;
+  font-size: 10px;
+}
+
+.asle-hero-note small {
+  margin-top: 2px;
+  color: #8a828c;
+  font-size: 9px;
+}
+
+.asle-trust-strip {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgba(69, 48, 82, 0.1);
+}
+
+.asle-trust-point {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 88px;
+  padding: 16px 24px 16px 0;
+}
+
+.asle-trust-point + .asle-trust-point {
+  padding-left: 28px;
+  border-left: 1px solid rgba(69, 48, 82, 0.1);
+}
+
+.asle-trust-icon {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+  place-items: center;
+  border: 1px solid #e8e0e9;
+  border-radius: 11px;
+  background: #fff;
+  color: var(--asle-purple);
+}
+
+.asle-trust-point strong,
+.asle-trust-point small {
+  display: block;
+}
+
+.asle-trust-point strong {
+  color: #433a47;
+  font-size: 11px;
+}
+
+.asle-trust-point small {
+  margin-top: 3px;
+  color: #857d88;
+  font-size: 10px;
+}
+
+.asle-section {
+  padding: 92px 0;
+}
+
+.asle-section-light {
+  background: #fffefa;
+}
+
+.asle-section-heading {
+  max-width: 600px;
+  margin: 0 0 38px;
+  text-align: left;
+}
+
+.asle-section-heading .asle-eyebrow {
+  margin-bottom: 14px;
+}
+
+.asle-section-heading h2 {
+  max-width: 540px;
+  margin: 0 0 11px;
+  color: #322a37;
+  font-size: clamp(32px, 4vw, 43px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.asle-section-heading p {
+  max-width: 490px;
+  color: #79727c;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.asle-services-grid {
+  gap: 15px;
+}
+
+.asle-service-card {
+  display: flex;
+  min-height: 235px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  border: 1px solid #ebe6eb;
+  border-radius: 13px;
+  background:
+    linear-gradient(150deg, rgba(247, 243, 248, 0.54), transparent 65%),
+    #fff;
+  box-shadow: 0 8px 25px rgba(41, 37, 45, 0.035);
+}
+
+.asle-service-card:hover {
+  transform: translateY(-4px);
+  border-color: #d8cbdc;
+  box-shadow: 0 16px 36px rgba(41, 37, 45, 0.08);
+}
+
+.asle-service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.asle-service-icon {
+  width: 45px;
+  height: 45px;
+  margin: 0;
+  border: 1px solid #ebe2ed;
+  border-radius: 12px;
+  background: #f4eff5;
+  color: var(--asle-purple);
+}
+
+.asle-service-card:nth-child(2) .asle-service-icon,
+.asle-service-card:nth-child(3) .asle-service-icon {
+  border-color: #eee6d5;
+  background: #faf6eb;
+  color: #947943;
+}
+
+.asle-service-index {
+  color: #b7aebc;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
+}
+
+.asle-service-card-copy {
+  margin-top: 24px;
+}
+
+.asle-service-card h3 {
+  margin: 0 0 8px;
+  color: #413846;
+  font-size: 16px;
+  letter-spacing: -0.015em;
+}
+
+.asle-service-card p {
+  color: #79727c;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.asle-steps {
+  gap: 15px;
+}
+
+.asle-step {
+  min-height: 205px;
+  padding: 23px;
+  border: 1px solid #e9e4e9;
+  border-radius: 13px;
+  background: #fff;
+}
+
+.asle-step-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 26px;
+}
+
+.asle-step-number {
+  width: auto;
+  height: auto;
+  margin: 0;
+  justify-content: flex-start;
+  border-radius: 0;
+  background: none;
+  color: #9e8ba7;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.asle-step:nth-child(2) .asle-step-number,
+.asle-step:nth-child(3) .asle-step-number {
+  background: none;
+  color: #9e8ba7;
+}
+
+.asle-step-icon {
+  display: grid;
+  width: 39px;
+  height: 39px;
+  place-items: center;
+  border-radius: 11px;
+  background: #f4eff5;
+  color: var(--asle-purple);
+}
+
+.asle-step h3 {
+  margin: 0 0 8px;
+  color: #413846;
+  font-size: 15px;
+}
+
+.asle-step p {
+  color: #79727c;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.asle-step-connector {
+  position: absolute;
+  top: 42px;
+  right: -19px;
+  z-index: 1;
+  width: 24px;
+  height: 1px;
+  background: #d8cbdc;
+}
+
+.asle-audience-grid {
+  gap: 16px;
+}
+
+.asle-audience-card {
+  display: flex;
+  min-height: 330px;
+  align-items: center;
+  padding: 35px;
+  border: 1px solid #e8e1e9;
+  border-radius: 16px;
+  background: #f7f3f8;
+  color: #372e3c;
+}
+
+.asle-audience-card::after {
+  display: none;
+}
+
+.asle-audience-professional {
+  border-color: #e9e1ce;
+  background: #faf6eb;
+}
+
+.asle-audience-card-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 360px;
+}
+
+.asle-audience-icon {
+  width: 46px;
+  height: 46px;
+  margin: 0 0 21px;
+  border: 1px solid rgba(101, 68, 122, 0.12);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--asle-purple);
+}
+
+.asle-audience-professional .asle-audience-icon {
+  border-color: rgba(167, 123, 44, 0.15);
+  color: #947943;
+}
+
+.asle-audience-label {
+  display: block;
+  margin-bottom: 9px;
+  color: #806d88;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.asle-audience-professional .asle-audience-label {
+  color: #8c7645;
+}
+
+.asle-audience-card h3 {
+  max-width: 350px;
+  margin: 0 0 10px;
+  color: #372e3c;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(23px, 2.7vw, 30px);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+}
+
+.asle-audience-card p {
+  max-width: 330px;
+  margin: 0 0 19px;
+  color: #716a75;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.asle-audience-card a {
+  gap: 8px;
+  color: var(--asle-purple-dark);
+  font-size: 11px;
+}
+
+.asle-audience-professional a {
+  color: #795f2f;
+}
+
+.asle-audience-decoration {
+  display: grid;
+  width: 124px;
+  height: 124px;
+  flex: 0 0 124px;
+  place-items: center;
+  margin-left: auto;
+  border: 1px solid rgba(101, 68, 122, 0.13);
+  border-radius: 50%;
+  color: rgba(101, 68, 122, 0.34);
+}
+
+.asle-audience-professional .asle-audience-decoration {
+  border-color: rgba(167, 123, 44, 0.16);
+  color: rgba(167, 123, 44, 0.38);
+}
+
+.asle-cta {
+  position: relative;
+  padding: 66px 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(216, 182, 106, 0.18), transparent 28%),
+    linear-gradient(120deg, #393044 0%, #50395e 100%);
+}
+
+.asle-cta-inner {
+  position: relative;
+  z-index: 1;
+  gap: 42px;
+}
+
+.asle-cta-copy {
+  max-width: 610px;
+}
+
+.asle-cta-eyebrow {
+  display: block;
+  margin-bottom: 12px;
+  color: #e3cc96;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.asle-cta h2 {
+  font-size: clamp(30px, 3.8vw, 43px);
+  letter-spacing: -0.025em;
+}
+
+.asle-cta p {
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.asle-cta-actions {
+  display: grid;
+  flex: 0 0 auto;
+  justify-items: start;
+  gap: 14px;
+}
+
+.asle-cta .asle-btn-gold {
+  background: #e0c27e;
+  color: #302639;
+}
+
+.asle-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.asle-cta-secondary:hover {
+  color: #fff;
+}
+
+.asle-footer {
+  padding: 50px 0 20px;
+  background: #29232d;
+}
+
+.asle-footer-grid {
+  gap: 36px;
+  padding-bottom: 36px;
+}
+
+.asle-footer-brand .asle-logo {
+  width: fit-content;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.asle-footer-brand .asle-brand-copy strong {
+  color: #fff;
+}
+
+.asle-footer-brand .asle-brand-copy small {
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.asle-footer-brand .asle-brand-monogram {
+  background: linear-gradient(145deg, #755888, #453052);
+}
+
+.asle-footer-brand p {
+  margin-top: 14px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.asle-footer-column h4 {
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.asle-footer-column a {
+  font-size: 11px;
+}
+
+.asle-footer-bottom {
+  padding-top: 18px;
+}
+
+.asle-footer-bottom p {
+  margin: 0;
+}
+
+.asle-auth-page {
+  background:
+    radial-gradient(ellipse at 80% 10%, rgba(232, 223, 235, 0.7), transparent 34%),
+    #f8f6f2;
+}
+
+.asle-auth-shell {
+  width: min(1280px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.92fr);
+  gap: 24px;
+}
+
+.asle-auth-brand {
+  min-height: calc(100vh - 48px);
+  padding: 30px clamp(30px, 5vw, 68px);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 92% 15%, rgba(216, 182, 106, 0.18), transparent 26%),
+    radial-gradient(circle at 20% 80%, rgba(139, 107, 157, 0.27), transparent 35%),
+    linear-gradient(145deg, #29252d 0%, #453052 100%);
+}
+
+.asle-auth-panel {
+  min-height: calc(100vh - 48px);
+  padding: 48px clamp(28px, 5vw, 64px);
+  border: 1px solid rgba(69, 48, 82, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 254, 252, 0.92);
+  box-shadow: 0 18px 54px rgba(41, 37, 45, 0.06);
+}
+
+.asle-auth-brand h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(43px, 4.7vw, 64px);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.asle-auth-heading h2 {
+  color: #342b39;
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.asle-auth-form {
+  gap: 18px;
+}
+
+.asle-auth-field input {
+  border-color: #e4dde5;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.asle-auth-submit {
+  min-height: 49px;
+  border-radius: 9px;
+}
+
+.asle-register-type {
+  border-radius: 10px;
+}
+
+.professional-shell,
+.admin-shell {
+  background:
+    radial-gradient(ellipse at 78% 0%, rgba(233, 224, 236, 0.4), transparent 32%),
+    #f6f4f1;
+}
+
+.professional-sidebar,
+.admin-sidebar {
+  padding: 22px 16px;
+  background: rgba(255, 254, 252, 0.97);
+  box-shadow: 8px 0 30px rgba(44, 35, 50, 0.035);
+}
+
+.professional-brand,
+.admin-brand {
+  padding-bottom: 21px;
+}
+
+.professional-brand-mark,
+.admin-brand-mark {
+  border-radius: 12px;
+  background: linear-gradient(145deg, #65447a, #453052);
+  box-shadow: 0 5px 12px rgba(69, 48, 82, 0.18);
+}
+
+.professional-brand strong,
+.admin-brand strong {
+  color: #352c3a;
+  letter-spacing: 0.025em;
+}
+
+.professional-user,
+.admin-user-chip {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.professional-navigation,
+.admin-navigation {
+  gap: 5px;
+}
+
+.professional-nav-link,
+.admin-nav-link {
+  min-height: 42px;
+  padding: 0 11px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-size: 11px;
+}
+
+.professional-nav-link.active,
+.admin-nav-link.active {
+  border-color: #e8deeb;
+  background: #f3edf5;
+  color: #453052;
+  box-shadow: inset 3px 0 0 #65447a;
+}
+
+.professional-content,
+.admin-content {
+  padding: 38px clamp(22px, 3vw, 46px);
+}
+
+.professional-dashboard,
+.admin-page {
+  width: min(1160px, 100%);
+}
+
+.professional-header,
+.admin-page-header {
+  align-items: center;
+  margin-bottom: 27px;
+}
+
+.professional-header h1,
+.admin-page-header h1,
+.professional-page-header h1,
+.client-page-header h1 {
+  font-size: clamp(30px, 3.4vw, 39px);
+}
+
+.professional-header p,
+.admin-page-header p {
+  font-size: 12px;
+}
+
+.professional-status {
+  padding: 9px 12px;
+  font-size: 10px;
+}
+
+.professional-overview-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(270px, 0.65fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.professional-profile-overview,
+.professional-checklist-card,
+.professional-shortcut,
+.professional-status-panel {
+  border: 1px solid #e8e2e9;
+  border-radius: 14px;
+  background: #fffefa;
+  box-shadow: 0 9px 26px rgba(41, 37, 45, 0.045);
+}
+
+.professional-profile-overview {
+  position: relative;
+  display: flex;
+  min-height: 282px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px;
+  padding: clamp(23px, 3vw, 36px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 95% 3%, rgba(232, 223, 235, 0.7), transparent 38%),
+    #fffefa;
+}
+
+.professional-profile-overview-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 490px;
+}
+
+.professional-profile-overview h2 {
+  max-width: 470px;
+  margin: 12px 0 9px;
+  color: #352c3a;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(23px, 2.4vw, 30px);
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+}
+
+.professional-profile-overview p {
+  max-width: 430px;
+  margin: 0 0 19px;
+  color: #756e78;
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.professional-profile-overview .primary-button {
+  width: fit-content;
+  min-height: 39px;
+  margin: 0;
+  gap: 7px;
+  font-size: 10px;
+}
+
+.professional-profile-progress {
+  display: grid;
+  flex: 0 0 132px;
+  justify-items: center;
+  gap: 11px;
+}
+
+.professional-progress-ring {
+  position: relative;
+  display: grid;
+  width: 112px;
+  height: 112px;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--asle-purple) var(--profile-progress),
+    #eee8f0 var(--profile-progress)
+  );
+}
+
+.professional-progress-ring::before {
+  position: absolute;
+  z-index: 0;
+  width: 91px;
+  height: 91px;
+  border-radius: 50%;
+  background: #fffefa;
+  content: "";
+}
+
+.professional-progress-ring > span {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 1px;
+}
+
+.professional-progress-ring strong {
+  color: #453052;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.professional-progress-ring small {
+  color: #8a818d;
+  font-size: 9px;
+}
+
+.professional-progress-caption {
+  max-width: 120px;
+  color: #837b86;
+  font-size: 9px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.professional-checklist-card {
+  padding: 22px;
+}
+
+.professional-checklist-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.professional-checklist-icon,
+.professional-shortcut-icon,
+.professional-status-panel-icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 10px;
+  background: #f2edf4;
+  color: var(--asle-purple);
+}
+
+.professional-checklist-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.professional-checklist-heading h2 {
+  margin: 3px 0 0;
+  color: #403646;
+  font-size: 13px;
+}
+
+.professional-checklist {
+  display: grid;
+  gap: 3px;
+  margin: 0 0 13px;
+  padding: 0;
+  list-style: none;
+}
+
+.professional-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 29px;
+  color: #746d77;
+  font-size: 10px;
+}
+
+.professional-checklist li.is-complete {
+  color: #524a56;
+}
+
+.professional-checklist-mark {
+  display: grid;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  place-items: center;
+  border: 1px solid #d8cbdc;
+  border-radius: 50%;
+  color: var(--asle-purple);
+}
+
+.professional-checklist li:not(.is-complete) .professional-checklist-mark span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c9becd;
+}
+
+.professional-checklist li.is-complete .professional-checklist-mark {
+  border-color: #ded2e2;
+  background: #f2edf4;
+}
+
+.professional-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding-top: 11px;
+  border-top: 1px solid #eee9ef;
+  color: var(--asle-purple);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.professional-shortcuts-section {
+  margin-bottom: 24px;
+}
+
+.professional-section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.professional-section-heading h2 {
+  margin: 5px 0 0;
+  color: #382f3d;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.professional-shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.professional-shortcut {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 14px;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.professional-shortcut:hover {
+  transform: translateY(-2px);
+  border-color: #d6c8dc;
+  box-shadow: 0 12px 28px rgba(41, 37, 45, 0.075);
+}
+
+.professional-shortcut-icon {
+  width: 37px;
+  height: 37px;
+}
+
+.professional-shortcut-copy {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 3px;
+}
+
+.professional-shortcut-copy strong {
+  overflow: hidden;
+  color: #463d4a;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.professional-shortcut-copy small {
+  overflow: hidden;
+  color: #89818c;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.professional-shortcut-arrow {
+  flex: 0 0 auto;
+  color: #9b8aa3;
+}
+
+.professional-status-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 21px 23px;
+  background: linear-gradient(100deg, #f4eff5, #fffefa);
+}
+
+.professional-status-panel-icon {
+  width: 39px;
+  height: 39px;
+}
+
+.professional-status-panel h2 {
+  margin: 5px 0 4px;
+  color: #403646;
+  font-size: 13px;
+}
+
+.professional-status-panel p {
+  max-width: 750px;
+  margin: 0;
+  color: #746d77;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.admin-stat-grid {
+  gap: 12px;
+}
+
+.admin-stat-card {
+  position: relative;
+  min-height: 126px;
+  padding: 18px;
+  overflow: hidden;
+  transition:
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+.admin-stat-card::after {
+  position: absolute;
+  right: -24px;
+  bottom: -40px;
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgba(101, 68, 122, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 0 0 16px rgba(101, 68, 122, 0.025);
+  content: "";
+  pointer-events: none;
+}
+
+.admin-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(41, 37, 45, 0.075);
+}
+
+.admin-stat-card strong {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 32px;
+}
+
+.admin-stat-card small {
+  font-size: 9px;
+}
+
+.admin-requests {
+  padding: 22px;
+}
+
+.admin-user-card,
+.admin-document-card,
+.admin-audit-row,
+.notification-card,
+.admin-filters,
+.admin-job-form {
+  border-radius: 12px;
+}
+
+.admin-filters {
+  padding: 12px;
+}
+
+.professional-page-header {
+  margin-bottom: 22px;
+}
+
+.professional-form-card,
+.client-panel {
+  padding: 23px;
+}
+
+.professional-field label,
+.client-request-form label,
+.document-upload-form > .professional-field {
+  color: #504854;
+  font-size: 10px;
+}
+
+.professional-field input,
+.professional-field select,
+.professional-field textarea,
+.client-request-form input,
+.client-request-form select,
+.client-request-form textarea,
+.document-upload-form input,
+.document-upload-form select {
+  border-color: #e4dde5;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.client-page-header,
+.professional-page-header {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e8e2e9;
+}
+
+.client-dashboard-links a {
+  border-radius: 8px;
+  font-size: 10px;
+}
+
+.client-request-item {
+  border-color: #eee9ef;
+}
+
+.professional-welcome {
+  border-radius: 14px;
+}
+
+@media (max-width: 1050px) {
+  .asle-hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(350px, 0.9fr);
+    gap: 35px;
+  }
+
+  .asle-hero h1 {
+    font-size: clamp(45px, 5.2vw, 58px);
+  }
+
+  .asle-hero-note {
+    right: -3px;
+  }
+}
+
+@media (max-width: 850px) {
+  .asle-header-inner {
+    min-height: 74px;
+  }
+
+  .asle-nav {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .asle-nav a {
+    font-size: 11px;
+  }
+
+  .asle-hero {
+    padding-top: 42px;
+  }
+
+  .asle-hero-inner {
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
+    gap: 24px;
+    min-height: 500px;
+    padding-bottom: 40px;
+  }
+
+  .asle-hero-visual {
+    min-height: 430px;
+  }
+
+  .asle-process-card {
+    padding: 22px;
+    transform: translate(0, 43px);
+  }
+
+  .asle-process-card h2 {
+    font-size: 23px;
+  }
+
+  .asle-hero-note {
+    right: -5px;
+    bottom: 0;
+  }
+
+  .asle-audience-decoration {
+    width: 88px;
+    height: 88px;
+    flex-basis: 88px;
+  }
+
+  .asle-audience-decoration svg {
+    width: 78px;
+    height: 78px;
+  }
+
+  .asle-auth-shell {
+    padding: 16px;
+  }
+
+  .asle-auth-brand,
+  .asle-auth-panel {
+    min-height: calc(100vh - 32px);
+  }
+
+  .professional-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .professional-checklist-card {
+    display: grid;
+    grid-template-columns: minmax(170px, 0.75fr) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .professional-checklist-heading,
+  .professional-checklist {
+    margin: 0;
+  }
+
+  .professional-text-link {
+    padding: 0;
+    border: 0;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 700px) {
+  .asle-container {
+    width: min(var(--container), calc(100% - 32px));
+  }
+
+  .asle-header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 14px;
+    padding: 7px 0 0;
+  }
+
+  .asle-logo {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .asle-brand-monogram {
+    width: 33px;
+    height: 33px;
+    flex-basis: 33px;
+    border-radius: 9px;
+    font-size: 19px;
+  }
+
+  .asle-brand-copy strong {
+    font-size: 13px;
+  }
+
+  .asle-brand-copy small {
+    font-size: 8px;
+  }
+
+  .asle-header-actions {
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  .asle-header-actions .asle-btn {
+    min-height: 36px;
+    padding: 0 11px;
+    font-size: 10px;
+  }
+
+  .asle-header-login {
+    font-size: 11px;
+  }
+
+  .asle-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: space-between;
+    gap: 9px;
+    width: 100%;
+    padding: 5px 0 8px;
+    overflow: visible;
+  }
+
+  .asle-nav a {
+    flex: 0 0 auto;
+    font-size: 9px;
+  }
+
+  .asle-hero {
+    padding-top: 39px;
+  }
+
+  .asle-hero-inner {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-bottom: 26px;
+  }
+
+  .asle-hero h1 {
+    margin-top: 19px;
+    font-size: clamp(42px, 11vw, 58px);
+  }
+
+  .asle-hero-description {
+    max-width: 540px;
+    font-size: 14px;
+  }
+
+  .asle-hero-actions {
+    margin-top: 21px;
+  }
+
+  .asle-hero-visual {
+    width: min(100%, 450px);
+    min-height: 418px;
+    justify-self: center;
+    margin-top: 9px;
+  }
+
+  .asle-hero-visual::before {
+    inset: 22px 9px 14px 15px;
+  }
+
+  .asle-hero-visual::after {
+    inset: 40px 28px 30px 35px;
+  }
+
+  .asle-process-card {
+    width: min(100% - 18px, 390px);
+    min-height: auto;
+    margin: 0 auto;
+    padding: 22px;
+    transform: translateY(42px);
+  }
+
+  .asle-process-card h2 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+
+  .asle-process-list {
+    margin: 15px 0;
+  }
+
+  .asle-hero-note {
+    right: 1px;
+    bottom: -1px;
+    padding: 9px 11px;
+  }
+
+  .asle-trust-strip {
+    grid-template-columns: 1fr;
+    padding: 7px 0;
+  }
+
+  .asle-trust-point,
+  .asle-trust-point + .asle-trust-point {
+    min-height: 64px;
+    padding: 10px 0;
+    border-left: 0;
+  }
+
+  .asle-trust-point + .asle-trust-point {
+    border-top: 1px solid rgba(69, 48, 82, 0.08);
+  }
+
+  .asle-trust-icon {
+    width: 35px;
+    height: 35px;
+    flex-basis: 35px;
+  }
+
+  .asle-trust-point strong {
+    font-size: 10px;
+  }
+
+  .asle-trust-point small {
+    font-size: 9px;
+  }
+
+  .asle-section {
+    padding: 67px 0;
+  }
+
+  .asle-section-heading {
+    margin-bottom: 27px;
+  }
+
+  .asle-section-heading h2 {
+    font-size: 32px;
+  }
+
+  .asle-services-grid,
+  .asle-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .asle-service-card {
+    min-height: 190px;
+  }
+
+  .asle-step {
+    min-height: 0;
+  }
+
+  .asle-step-heading {
+    margin-bottom: 17px;
+  }
+
+  .asle-step-connector {
+    display: none;
+  }
+
+  .asle-audience-card {
+    min-height: 285px;
+    padding: 25px;
+  }
+
+  .asle-audience-decoration {
+    display: none;
+  }
+
+  .asle-cta {
+    padding: 54px 0;
+  }
+
+  .asle-cta-inner {
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .asle-cta-actions {
+    width: 100%;
+  }
+
+  .asle-cta-actions .asle-btn {
+    width: 100%;
+  }
+
+  .asle-footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 20px;
+  }
+
+  .asle-footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .asle-auth-shell {
+    display: block;
+    padding: 0;
+  }
+
+  .asle-auth-brand {
+    display: none;
+  }
+
+  .asle-auth-panel {
+    min-height: 100vh;
+    padding: 35px 22px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .asle-auth-mobile-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 35px;
+  }
+
+  .asle-auth-mobile-logo .asle-auth-logo {
+    color: var(--asle-purple);
+  }
+
+  .asle-auth-mobile-logo span {
+    margin-top: 7px;
+    color: var(--asle-gold-dark);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+  }
+
+  .professional-sidebar,
+  .admin-sidebar {
+    position: static;
+    width: 100%;
+    min-height: auto;
+    padding: 12px 15px;
+    border-right: 0;
+    border-bottom: 1px solid #e8e2e9;
+  }
+
+  .professional-brand,
+  .admin-brand {
+    padding: 0 4px 11px;
+  }
+
+  .professional-user,
+  .admin-user-chip {
+    margin-bottom: 10px;
+    padding: 9px 4px;
+    border-top: 1px solid #eee9ef;
+  }
+
+  .professional-navigation,
+  .admin-navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    padding: 5px 0 4px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .professional-navigation-title,
+  .admin-navigation-label {
+    display: none;
+  }
+
+  .professional-nav-link,
+  .admin-nav-link {
+    min-height: 36px;
+    flex: 0 0 auto;
+    padding: 0 10px;
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .admin-nav-link > svg {
+    flex: 0 0 16px;
+    color: #8d8094;
+  }
+
+  .professional-nav-link.active,
+  .admin-nav-link.active {
+    box-shadow: inset 0 -2px 0 #65447a;
+  }
+
+  .admin-nav-link.active > svg {
+    color: var(--asle-purple);
+  }
+
+  .professional-sidebar-bottom,
+  .admin-sidebar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 9px 0 0;
+  }
+
+  .professional-account {
+    min-width: 0;
+    flex: 1;
+    padding: 8px 10px;
+    margin: 0;
+  }
+
+  .professional-logout,
+  .admin-sidebar-footer button {
+    width: auto;
+    flex: 0 0 auto;
+    min-height: 35px;
+    padding: 0 10px;
+    background: #f4f0f4;
+  }
+
+  .professional-content,
+  .admin-content {
+    min-height: auto;
+    margin-left: 0;
+    padding: 25px 16px 35px;
+  }
+
+  .professional-header {
+    gap: 13px;
+  }
+
+  .professional-overview-grid {
+    gap: 11px;
+  }
+
+  .professional-profile-overview {
+    min-height: 0;
+    padding: 21px;
+  }
+
+  .professional-profile-progress {
+    flex-basis: 94px;
+  }
+
+  .professional-progress-ring {
+    width: 84px;
+    height: 84px;
+  }
+
+  .professional-progress-ring::before {
+    width: 68px;
+    height: 68px;
+  }
+
+  .professional-progress-ring strong {
+    font-size: 20px;
+  }
+
+  .professional-checklist-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .professional-checklist-heading,
+  .professional-checklist {
+    margin: 0;
+  }
+
+  .professional-text-link {
+    padding-top: 10px;
+    border-top: 1px solid #eee9ef;
+  }
+
+  .professional-shortcuts-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .professional-shortcut {
+    padding: 12px;
+  }
+
+  .professional-status-panel {
+    padding: 17px;
+  }
+
+  .admin-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 430px) {
+  .asle-header-actions .asle-btn {
+    padding: 0 9px;
+  }
+
+  .asle-hero h1 {
+    font-size: clamp(34px, 9vw, 38px);
+  }
+
+  .asle-hero-actions {
+    flex-direction: column;
+  }
+
+  .asle-hero-actions .asle-btn {
+    width: 100%;
+  }
+
+  .asle-process-card {
+    padding: 18px;
+  }
+
+  .asle-process-status {
+    font-size: 7px;
+  }
+
+  .asle-process-card h2 {
+    font-size: 22px;
+  }
+
+  .asle-audience-card {
+    padding: 21px;
+  }
+
+  .professional-header h1 {
+    font-size: 29px;
+  }
+
+  .professional-profile-overview {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .professional-profile-progress {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .professional-progress-ring {
+    width: 55px;
+    height: 55px;
+  }
+
+  .professional-progress-ring::before {
+    width: 45px;
+    height: 45px;
+  }
+
+  .professional-progress-ring strong {
+    font-size: 15px;
+  }
+
+  .professional-progress-ring small {
+    display: none;
+  }
+
+  .professional-progress-caption {
+    max-width: none;
+    text-align: left;
+  }
+
+  .admin-stat-card {
+    min-height: 110px;
+    padding: 14px;
+  }
+
+  .admin-stat-card strong {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

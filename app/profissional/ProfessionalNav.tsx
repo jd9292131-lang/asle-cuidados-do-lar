@@ -2,6 +2,16 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import {
+  Bell,
+  BriefcaseBusiness,
+  CalendarDays,
+  FileText,
+  House,
+  MessageSquare,
+  UserRound,
+  UserRoundCheck,
+} from "lucide-react";
 
 type ProfessionalNavProps = {
   user: {
@@ -15,42 +25,42 @@ const navigation = [
   {
     href: "/profissional/dashboard",
     label: "Dashboard",
-    icon: "⌂",
+    icon: House,
   },
   {
     href: "/profissional/perfil",
     label: "Meu perfil",
-    icon: "○",
+    icon: UserRound,
   },
   {
     href: "/profissional/documentos",
     label: "Documentos",
-    icon: "▤",
+    icon: FileText,
   },
   {
     href: "/profissional/oportunidades",
     label: "Oportunidades",
-    icon: "◈",
+    icon: BriefcaseBusiness,
   },
   {
     href: "/profissional/candidaturas",
     label: "Candidaturas",
-    icon: "✓",
+    icon: UserRoundCheck,
   },
   {
     href: "/profissional/entrevistas",
     label: "Entrevistas",
-    icon: "□",
+    icon: CalendarDays,
   },
   {
     href: "/profissional/mensagens",
     label: "Mensagens",
-    icon: "◇",
+    icon: MessageSquare,
   },
   {
     href: "/profissional/notificacoes",
     label: "Notificações",
-    icon: "◉",
+    icon: Bell,
   },
 ];
 
@@ -105,6 +115,7 @@ export default function ProfessionalNav({
         </span>
 
         {navigation.map((item) => {
+          const Icon = item.icon;
           const active =
             pathname === item.href ||
             (item.href !== "/profissional/dashboard" &&
@@ -119,7 +130,7 @@ export default function ProfessionalNav({
               }`}
             >
               <span className="professional-nav-icon">
-                {item.icon}
+                <Icon size={16} strokeWidth={1.8} aria-hidden="true" />
               </span>
 
               <span>{item.label}</span>

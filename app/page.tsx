@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import Hero from "../components/home/Hero";
 import Services from "../components/home/Services";
 import HowItWorks from "../components/home/HowItWorks";
@@ -8,21 +7,28 @@ import CTA from "../components/home/CTA";
 
 import { ArrowRight } from "lucide-react";
 import { getAsleWhatsAppUrl } from "@/lib/contact";
+
+function AsleWordmark() {
+  return (
+    <>
+      <span className="asle-brand-monogram" aria-hidden="true">A</span>
+      <span className="asle-brand-copy">
+        <strong>ASLE</strong>
+        <small>Cuidados do Lar</small>
+      </span>
+    </>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
       {/* HEADER */}
       <header className="asle-header">
         <div className="asle-container asle-header-inner">
-          <Link href="/" className="asle-logo">
-  <Image
-    src="/assets/logo.jpg"
-    alt="ASLE - Cuidados do Lar"
-    width={140}
-    height={70}
-    priority
-  />
-</Link>
+          <Link href="/" className="asle-logo" aria-label="ASLE — Cuidados do Lar">
+            <AsleWordmark />
+          </Link>
 
           <nav className="asle-nav" aria-label="Navegação principal">
             <a href="#servicos">Serviços</a>
@@ -69,14 +75,9 @@ export default function HomePage() {
         <div className="asle-container">
           <div className="asle-footer-grid">
             <div className="asle-footer-brand">
-             <Link href="/" className="asle-logo">
-  <Image
-    src="/assets/logo.jpg"
-    alt="ASLE - Cuidados do Lar"
-    width={120}
-    height={60}
-  />
-</Link>
+              <Link href="/" className="asle-logo" aria-label="ASLE — Cuidados do Lar">
+                <AsleWordmark />
+              </Link>
 
               <p>
                 Recrutamento, seleção e intermediação de

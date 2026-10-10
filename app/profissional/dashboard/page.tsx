@@ -1,5 +1,16 @@
-import { redirect } from "next/navigation";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BriefcaseBusiness,
+  CalendarDays,
+  Check,
+  Clock3,
+  FileText,
+  UserRound,
+} from "lucide-react";
+import type { CSSProperties } from "react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { requireRole } from "@/lib/auth/session";
 import { prisma } from "@/lib/db/prisma";
 
@@ -23,34 +34,25 @@ export default async function ProfissionalDashboard() {
     redirect("/registar");
   }
 
-  const profileFields = [
-    candidate.professionalTitle,
-    candidate.city,
-    candidate.availability,
-    candidate.yearsExperience !== null,
-    candidate.bio,
+  const profileItems = [
+    { label: "Título profissional", complete: Boolean(candidate.professionalTitle) },
+    { label: "Localização", complete: Boolean(candidate.city) },
+    { label: "Disponibilidade", complete: Boolean(candidate.availability) },
+    { label: "Experiência", complete: candidate.yearsExperience !== null },
+    { label: "Apresentação", complete: Boolean(candidate.bio) },
   ];
-
-  const completedFields = profileFields.filter(Boolean).length;
+  const completedFields = profileItems.filter((item) => item.complete).length;
   const profileProgress = Math.round(
-    (completedFields / profileFields.length) * 100
+    (completedFields / profileItems.length) * 100
   );
 
   return (
     <main className="professional-dashboard">
       <header className="professional-header">
         <div>
-          <span className="professional-eyebrow">
-            ÁREA PROFISSIONAL
-          </span>
-
-          <h1>
-            Olá, {user.firstName}
-          </h1>
-
-          <p>
-            Bem-vinda à sua área profissional da ASLE.
-          </p>
+          <span className="professional-eyebrow">A SUA ÁREA PROFISSIONAL</span>
+          <h1>Olá, {user.firstName}.</h1>
+          <p>Acompanhe o seu perfil e os próximos passos com a ASLE.</p>
         </div>
 
         <div className="professional-status">
@@ -59,121 +61,125 @@ export default async function ProfissionalDashboard() {
         </div>
       </header>
 
-      <section className="professional-grid">
-        <article className="professional-card professional-card-main">
-          <div className="card-icon">👤</div>
-
-          <div>
-            <span className="card-label">PERFIL PROFISSIONAL</span>
-
-            <h2>
-              Complete o seu perfil
-            </h2>
-
+      <section className="professional-overview-grid">
+        <article className="professional-profile-overview">
+          <div className="professional-profile-overview-copy">
+            <span className="professional-card-kicker">O SEU PERFIL</span>
+            <h2>Um perfil completo ajuda-nos a conhecer melhor a sua experiência.</h2>
             <p>
-              Quanto mais completo estiver o seu perfil,
-              melhor poderemos avaliar as oportunidades
-              adequadas ao seu perfil profissional.
+              Atualize as suas informações para que a equipa ASLE possa avaliar
+              o seu perfil para futuras oportunidades.
             </p>
+            <Link href="/profissional/perfil" className="primary-button">
+              Rever o meu perfil
+              <ArrowRight size={16} aria-hidden="true" />
+            </Link>
           </div>
 
-          <div className="progress-area">
-            <div className="progress-header">
-              <span>Perfil completo</span>
-              <strong>{profileProgress}%</strong>
+          <div className="professional-profile-progress">
+            <div
+              className="professional-progress-ring"
+              style={{ "--profile-progress": `${profileProgress}%` } as CSSProperties}
+              aria-label={`Perfil ${profileProgress}% completo`}
+            >
+              <span>
+                <strong>{profileProgress}%</strong>
+                <small>completo</small>
+              </span>
             </div>
+            <span className="professional-progress-caption">
+              {completedFields} de {profileItems.length} informações preenchidas
+            </span>
+          </div>
+        </article>
 
-            <div className="progress-track">
-              <div
-                className="progress-value"
-                style={{ width: `${profileProgress}%` }}
-              />
+        <aside className="professional-checklist-card">
+          <div className="professional-checklist-heading">
+            <span className="professional-checklist-icon">
+              <UserRound size={17} aria-hidden="true" />
+            </span>
+            <div>
+              <span className="professional-card-kicker">PRÓXIMO PASSO</span>
+              <h2>Complete o seu perfil</h2>
             </div>
           </div>
 
-          <Link href="/profissional/perfil" className="primary-button">
-            Completar perfil
+          <ul className="professional-checklist">
+            {profileItems.map((item) => (
+              <li key={item.label} className={item.complete ? "is-complete" : ""}>
+                <span className="professional-checklist-mark">
+                  {item.complete ? (
+                    <Check size={13} aria-hidden="true" />
+                  ) : (
+                    <span />
+                  )}
+                </span>
+                {item.label}
+              </li>
+            ))}
+          </ul>
+
+          <Link href="/profissional/perfil" className="professional-text-link">
+            Atualizar informações
+            <ArrowUpRight size={15} aria-hidden="true" />
           </Link>
-        </article>
-
-        <article className="professional-card">
-          <div className="card-icon">📄</div>
-
-          <span className="card-label">
-            DOCUMENTOS
-          </span>
-
-          <h2>
-            Os seus documentos
-          </h2>
-
-          <p>
-            Envie o seu documento de identificação,
-            currículo e certificados profissionais.
-          </p>
-
-          <Link href="/profissional/documentos" className="secondary-button">
-            Gerir documentos
-          </Link>
-        </article>
-
-        <article className="professional-card">
-          <div className="card-icon">💼</div>
-
-          <span className="card-label">
-            OPORTUNIDADES
-          </span>
-
-          <h2>
-            Vagas disponíveis
-          </h2>
-
-          <p>
-            Consulte oportunidades compatíveis com
-            o seu perfil e disponibilidade.
-          </p>
-
-          <Link href="/profissional/oportunidades" className="secondary-button">
-            Ver oportunidades
-          </Link>
-        </article>
-
-        <article className="professional-card">
-          <div className="card-icon">📅</div>
-
-          <span className="card-label">
-            ENTREVISTAS
-          </span>
-
-          <h2>
-            Próximas entrevistas
-          </h2>
-
-          <p>
-            Aqui aparecerão as entrevistas agendadas
-            pela equipa de recrutamento da ASLE.
-          </p>
-
-          <Link href="/profissional/entrevistas" className="secondary-button">
-            Ver entrevistas
-          </Link>
-        </article>
+        </aside>
       </section>
 
-      <section className="professional-welcome">
+      <section className="professional-shortcuts-section">
+        <div className="professional-section-heading">
+          <div>
+            <span className="professional-card-kicker">ACESSO RÁPIDO</span>
+            <h2>O que precisa de fazer?</h2>
+          </div>
+        </div>
+
+        <div className="professional-shortcuts-grid">
+          <Link href="/profissional/documentos" className="professional-shortcut">
+            <span className="professional-shortcut-icon">
+              <FileText size={19} aria-hidden="true" />
+            </span>
+            <span className="professional-shortcut-copy">
+              <strong>Os meus documentos</strong>
+              <small>Gerir identificação e certificados</small>
+            </span>
+            <ArrowUpRight size={17} className="professional-shortcut-arrow" aria-hidden="true" />
+          </Link>
+
+          <Link href="/profissional/oportunidades" className="professional-shortcut">
+            <span className="professional-shortcut-icon">
+              <BriefcaseBusiness size={19} aria-hidden="true" />
+            </span>
+            <span className="professional-shortcut-copy">
+              <strong>Oportunidades</strong>
+              <small>Consultar vagas disponíveis</small>
+            </span>
+            <ArrowUpRight size={17} className="professional-shortcut-arrow" aria-hidden="true" />
+          </Link>
+
+          <Link href="/profissional/entrevistas" className="professional-shortcut">
+            <span className="professional-shortcut-icon">
+              <CalendarDays size={19} aria-hidden="true" />
+            </span>
+            <span className="professional-shortcut-copy">
+              <strong>Entrevistas</strong>
+              <small>Acompanhar agendamentos</small>
+            </span>
+            <ArrowUpRight size={17} className="professional-shortcut-arrow" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="professional-status-panel">
+        <span className="professional-status-panel-icon">
+          <Clock3 size={20} aria-hidden="true" />
+        </span>
         <div>
-          <span className="professional-eyebrow">
-            ASLE — CUIDADOS DO LAR
-          </span>
-
-          <h2>
-            O seu próximo trabalho pode começar aqui.
-          </h2>
-
+          <span className="professional-card-kicker">ACOMPANHAMENTO ASLE</span>
+          <h2>A sua candidatura está em análise.</h2>
           <p>
-            Mantenha os seus dados e documentos atualizados
-            para que a nossa equipa possa encontrar
-            oportunidades adequadas ao seu perfil.
+            Mantenha os seus dados atualizados. A equipa ASLE entrará em
+            contacto quando houver novidades sobre o seu processo.
           </p>
         </div>
       </section>
