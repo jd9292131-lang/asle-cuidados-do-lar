@@ -4,12 +4,11 @@ import {
   CheckCircle2,
   ClipboardCheck,
   HeartHandshake,
-  MessageCircle,
   Search,
   ShieldCheck,
   Sparkles,
 } from "lucide-react";
-import { getAsleWhatsAppUrl } from "@/lib/contact";
+import Link from "next/link";
 
 const trustPoints = [
   {
@@ -58,25 +57,20 @@ export default function Hero() {
             </p>
 
             <div className="asle-hero-actions">
-              <a
-                href={getAsleWhatsAppUrl(
-                  "Olá, gostaria de encontrar uma profissional para o meu lar."
-                )}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/registar?tipo=cliente"
                 className="asle-btn asle-btn-primary asle-btn-large"
               >
-                <MessageCircle size={17} aria-hidden="true" />
                 Encontrar profissional
                 <ArrowRight size={17} aria-hidden="true" />
-              </a>
+              </Link>
 
-              <a
-                href="#profissionais"
+              <Link
+                href="/registar?tipo=profissional"
                 className="asle-btn asle-btn-outline asle-btn-large"
               >
                 Quero trabalhar
-              </a>
+              </Link>
             </div>
 
             <div className="asle-hero-trust">

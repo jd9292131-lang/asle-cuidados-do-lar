@@ -1,5 +1,6 @@
 import {
   ArrowRight,
+  Mail,
   MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
@@ -20,16 +21,25 @@ export default function CTA() {
         </div>
 
         <div className="asle-cta-actions">
-          <a
-            href={getAsleWhatsAppUrl("Olá, gostaria de falar com a ASLE sobre os serviços para o lar.")}
-            className="asle-btn asle-btn-gold asle-btn-large"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <MessageCircle size={18} aria-hidden="true" />
-            Contactar pelo WhatsApp
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
+          <div className="asle-cta-contact-actions">
+            <a
+              href={getAsleWhatsAppUrl("Olá, gostaria de falar com a ASLE sobre os serviços para o lar.")}
+              className="asle-btn asle-btn-gold asle-btn-large"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <MessageCircle size={18} aria-hidden="true" />
+              Contactar pelo WhatsApp
+              <ArrowRight size={18} aria-hidden="true" />
+            </a>
+            <a
+              href="mailto:asle.contacto@gmail.com"
+              className="asle-btn asle-btn-email asle-btn-large"
+            >
+              <Mail size={18} aria-hidden="true" />
+              Email
+            </a>
+          </div>
           <Link href="/registar" className="asle-cta-secondary">
             Quero trabalhar com a ASLE
             <ArrowRight size={15} aria-hidden="true" />

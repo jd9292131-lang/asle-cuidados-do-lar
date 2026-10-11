@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
@@ -19,6 +19,16 @@ type AccountType = "CANDIDATE" | "CLIENT";
 export default function RegistarPage() {
   const [accountType, setAccountType] =
     useState<AccountType>("CANDIDATE");
+
+  useEffect(() => {
+    const accountOption = new URLSearchParams(window.location.search).get("tipo");
+
+    if (accountOption === "cliente") {
+      setAccountType("CLIENT");
+    } else if (accountOption === "profissional") {
+      setAccountType("CANDIDATE");
+    }
+  }, []);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

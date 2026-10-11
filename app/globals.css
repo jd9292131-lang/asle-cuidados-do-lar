@@ -4660,6 +4660,23 @@ img {
   color: #302639;
 }
 
+.asle-cta-contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.asle-cta .asle-btn-email {
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  background: transparent;
+  color: #fff;
+}
+
+.asle-cta .asle-btn-email:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
 .asle-cta-secondary {
   display: inline-flex;
   align-items: center;
@@ -5625,6 +5642,11 @@ img {
 
   .asle-cta-actions .asle-btn {
     width: 100%;
+  }
+
+  .asle-cta-contact-actions {
+    width: 100%;
+    flex-direction: column;
   }
 
   .asle-footer-grid {
